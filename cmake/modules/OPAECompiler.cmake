@@ -171,6 +171,14 @@ function(opae_add_executable)
     cmake_parse_arguments(OPAE_ADD_EXECUTABLE "${options}"
         "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
+    foreach(src ${OPAE_ADD_EXECUTABLE_SOURCE})
+        if( NOT (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${FILE_WORKING_ON}${src} OR EXISTS ${src}) )
+              message("File not found: ${src}")
+              return()
+        endif()
+    endforeach(src)
+
+
     add_executable(${OPAE_ADD_EXECUTABLE_TARGET} ${OPAE_ADD_EXECUTABLE_SOURCE})
 
     target_include_directories(${OPAE_ADD_EXECUTABLE_TARGET} PUBLIC

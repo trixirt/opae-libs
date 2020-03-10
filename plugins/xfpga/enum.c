@@ -72,6 +72,26 @@ struct dev_list {
 	struct dev_list *fme;
 };
 
+STATIC int verify_dev(const struct dev_list *dev)
+{
+	struct stat statsysfs;
+	struct stat statdev;
+
+	if (!strlen(dev->sysfspath) ||
+	    !strlen(dev->devpath))
+		return 1;
+
+	if (stat(dev->sysfspath, &statsysfs) ||
+	    stat(dev->devpath, &statdev))
+		return 2;
+
+	if (!S_ISDIR(statsysfs.st_mode) ||
+	    !S_ISCHR(statdev.st_mode))
+		return 3;
+
+	return 0;
+}
+
 STATIC bool matches_filter(const struct dev_list *attr, const fpga_properties filter)
 {
 	struct _fpga_properties *_filter = (struct _fpga_properties *)filter;
@@ -603,7 +623,7 @@ fpga_result __XFPGA_API__ xfpga_fpgaEnumerate(const fpga_properties *filters,
 	for (lptr = head.next; NULL != lptr; lptr = lptr->next) {
 		struct _fpga_token *_tok;
 
-		if (!strnlen_s(lptr->devpath, sizeof(lptr->devpath)))
+		if (verify_dev(lptr))
 			continue;
 
 		// propagate the socket_id field.

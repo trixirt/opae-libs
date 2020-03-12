@@ -203,8 +203,17 @@ struct pvalue {
   bool operator==(const T &other) { return is_set() && (copy_ == other); }
 
   void update() {
-    ASSERT_FPGA_OK(get_(*props_, &copy_));
-    is_set_ = true;
+    auto res = get_(*props_, &copy_);
+    switch (res) {
+    case FPGA_OK:
+      is_set_ = true;
+      break;
+    case FPGA_NOT_FOUND:
+      is_set_ = false;
+      break;
+    default:
+      ASSERT_FPGA_OK(res);
+    }
   }
 
   /**

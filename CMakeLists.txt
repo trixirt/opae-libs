@@ -98,6 +98,12 @@ mark_as_advanced(OPAE_ENABLE_MOCK)
 option(OPAE_BUILD_SIM "Enable building of the AFU simulation environment" OFF)
 mark_as_advanced(OPAE_BUILD_SIM)
 
+option(OPAE_BUILD_ASE_SAMPLES "Enable building ASE samples" OFF)
+mark_as_advanced(OPAE_BUILD_ASE_SAMPLES)
+
+option(OPAE_BUILD_SAMPLES "Enable building samples" ON)
+mark_as_advanced(OPAE_BUILD_SAMPLES)
+
 option(OPAE_PRESERVE_REPOS "Disable refresh of external repos" OFF)
 mark_as_advanced(OPAE_PRESERVE_REPOS)
 

@@ -104,6 +104,33 @@ mark_as_advanced(OPAE_BUILD_ASE_SAMPLES)
 option(OPAE_BUILD_SAMPLES "Enable building samples" ON)
 mark_as_advanced(OPAE_BUILD_SAMPLES)
 
+option(OPAE_BUILD_EXTRA_TOOLS "Enable building extra tools" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS)
+
+option(OPAE_BUILD_EXTRA_TOOLS_USERCLK "Enable building extra tool userclk" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_USERCLK)
+
+option(OPAE_BUILD_EXTRA_TOOLS_PACKAGER "Enable building extra tool packager" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_PACKAGER)
+
+option(OPAE_BUILD_EXTRA_TOOLS_CXXUTILS "Enable building extra tool c++utils" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_CXXUTILS)
+
+option(OPAE_BUILD_EXTRA_TOOLS_FPGADIAG "Enable building extra tool fpgadiag" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_FPGADIAG)
+
+option(OPAE_BUILD_EXTRA_TOOLS_MMLINK "Enable building extra tool mmlink" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_MMLINK)
+
+option(OPAE_BUILD_EXTRA_TOOLS_RAS "Enable building extra tool ras" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_RAS)
+
+option(OPAE_BUILD_EXTRA_TOOLS_PAC_HSSI_CONFIG  "Enable building extra tool pac_hssi_config" ON)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_PAC_HSSI_CONFIG)
+
+option(OPAE_BUILD_EXTRA_TOOLS_FPGABIST "Enable building extra tool fpgabist" OFF)
+mark_as_advanced(OPAE_BUILD_EXTRA_TOOLS_FPGABIST)
+
 option(OPAE_PRESERVE_REPOS "Disable refresh of external repos" OFF)
 mark_as_advanced(OPAE_PRESERVE_REPOS)
 
